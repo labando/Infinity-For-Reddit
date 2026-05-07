@@ -5,7 +5,7 @@ import ml.docilealligator.infinityforreddit.commentfilter.CommentFilter
 import ml.docilealligator.infinityforreddit.post.Post
 
 class PostDetailCommentsCacheManager(
-    val cacheMap: AutoRemovalLinkedHashMap<String, PostDetailCommentsCache> = AutoRemovalLinkedHashMap<String, PostDetailCommentsCache>(10)
+    val cacheMap: AutoRemovalLinkedHashMap<String, PostDetailCommentsCache>
 ) {
     fun saveCache(
         post: Post,
