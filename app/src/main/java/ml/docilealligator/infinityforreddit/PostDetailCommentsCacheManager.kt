@@ -5,7 +5,7 @@ import ml.docilealligator.infinityforreddit.commentfilter.CommentFilter
 import ml.docilealligator.infinityforreddit.post.Post
 
 class PostDetailCommentsCacheManager(
-    val cacheMap: LinkedHashMap<String, PostDetailCommentsCache> = AutoRemovalLinkedHashMap<String, PostDetailCommentsCache>(10)
+    val cacheMap: AutoRemovalLinkedHashMap<String, PostDetailCommentsCache> = AutoRemovalLinkedHashMap<String, PostDetailCommentsCache>(10)
 ) {
     fun saveCache(
         post: Post,
@@ -41,5 +41,13 @@ class PostDetailCommentsCacheManager(
 
     fun removeCache(postId: String?) {
         cacheMap.remove(postId);
+    }
+
+    fun setCapacity(capacity: Int) {
+        if (capacity < 0) {
+            return
+        }
+
+        cacheMap.maxSize = capacity
     }
 }
